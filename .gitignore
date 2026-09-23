@@ -11,3 +11,5 @@ kits-out.json
 .vercel
 uploads/
 tmp/
+*.tsbuildinfo
+frontend/.env.local
