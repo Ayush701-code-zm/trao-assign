@@ -1,0 +1,14 @@
+[
+  {
+    "id": "case-local-01",
+    "jd": "Senior Backend Engineer\n\nRequired:\n- 5+ years Node.js or Go\n- Experience designing REST APIs\n- Mentoring junior engineers\n\nNice to have:\n- Kafka experience",
+    "company_url": "http://localhost:8099/acme/",
+    "days": 5
+  },
+  {
+    "id": "case-thin",
+    "jd": "Engineer\nReact.",
+    "company_url": "http://localhost:8099/acme/",
+    "days": 1
+  }
+]

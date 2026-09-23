@@ -1,0 +1,14 @@
+[
+  {
+    "id": "case-01",
+    "jd": "Senior Backend Engineer\n\nWe are looking for an engineer with 5+ years of experience building APIs in Node.js or Go. You will own services end-to-end, mentor junior engineers, and collaborate with product on roadmap trade-offs.\n\nRequired:\n- Strong experience with REST and relational databases\n- Production experience with cloud (AWS or GCP)\n- Clear written communication\n\nNice to have:\n- Experience with Kafka\n- Prior startup experience",
+    "company_url": "https://about.gitlab.com/",
+    "days": 5
+  },
+  {
+    "id": "case-02",
+    "jd": "Frontend Engineer\nReact experience required.",
+    "company_url": "https://posthog.com/",
+    "days": 3
+  }
+]

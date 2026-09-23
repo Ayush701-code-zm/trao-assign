@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ink: #0f1c2e;
+  --paper: #f3f5f7;
+  --sea: #0d7377;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--ink);
+  background:
+    radial-gradient(1200px 600px at 10% -10%, rgba(13, 115, 119, 0.12), transparent 55%),
+    radial-gradient(900px 500px at 100% 0%, rgba(15, 28, 46, 0.06), transparent 50%),
+    linear-gradient(180deg, #eef2f5 0%, #f7f8fa 40%, #f3f5f7 100%);
+}
+
+*:focus-visible {
+  outline: 2px solid #0d7377;
+  outline-offset: 2px;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-bar {
+  0%,
+  100% {
+    transform: scaleX(0.35);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+.animate-rise {
+  animation: rise 0.45s ease-out both;
+}
+
+.progress-shimmer {
+  transform-origin: left;
+  animation: pulse-bar 1.6s ease-in-out infinite;
+}
