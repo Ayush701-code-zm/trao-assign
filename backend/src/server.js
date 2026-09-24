@@ -1,7 +1,6 @@
 import express from 'express';
 import session from 'express-session';
 import MongoStore from 'connect-mongo';
-import cors from 'cors';
 import mongoose from 'mongoose';
 import { config } from './config.js';
 import authRoutes from './routes/auth.js';
@@ -10,12 +9,6 @@ import kitRoutes from './routes/kits.js';
 const app = express();
 
 app.set('trust proxy', 1);
-app.use(
-  cors({
-    origin: config.corsOrigin,
-    credentials: true,
-  })
-);
 app.use(express.json({ limit: '2mb' }));
 
 app.use(
@@ -30,7 +23,7 @@ app.use(
     }),
     cookie: {
       httpOnly: true,
-      sameSite: config.nodeEnv === 'production' ? 'none' : 'lax',
+      sameSite: 'lax',
       secure: config.nodeEnv === 'production',
       maxAge: 1000 * 60 * 60 * 24 * 7,
     },

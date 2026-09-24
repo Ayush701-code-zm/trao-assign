@@ -12,7 +12,7 @@ Turn a job description and company website into a personalised interview prepara
 | Backend | Node.js + Express | Preferred stack; clear pipeline modules |
 | Database | MongoDB + express-session (connect-mongo) | Preferred stack; session auth without extra JWT surface |
 | Scraping | fetch + cheerio + robots-parser | Lightweight, works against local fixture hosts, respects robots.txt |
-| LLM | **Groq** (`llama-3.1-8b-instant`) by default; Gemini optional | Genuine free tier, low latency; swap via `LLM_PROVIDER` |
+| LLM | **Groq** (`openai/gpt-oss-20b`) by default; Gemini optional | Genuine free tier, low latency; swap via `LLM_PROVIDER` |
 
 ## Features
 
@@ -40,7 +40,8 @@ cp .env.example .env
 # edit .env — set MONGODB_URI, SESSION_SECRET, GROQ_API_KEY
 
 cp frontend/.env.local.example frontend/.env.local
-# NEXT_PUBLIC_API_URL=http://localhost:4000
+# BACKEND_URL=http://localhost:4000
+# Browser talks only to Next.js; /api is proxied to the backend (no CORS).
 
 npm run install:all
 ```
@@ -78,7 +79,7 @@ npm run evaluate -- --input samples/cases.example.json --output kits-out.json
 
 ## LLM provider
 
-- **Default:** Groq · `llama-3.1-8b-instant`
+- **Default:** Groq · `openai/gpt-oss-20b`
 - **Alternative:** set `LLM_PROVIDER=gemini`, `GEMINI_API_KEY`, optional `GEMINI_MODEL`
 
 Retries use exponential backoff on 429 / 5xx so free-tier rate limits do not abort a run.
@@ -190,8 +191,8 @@ Creating a kit sets status `queued` → `running` with progress updates. A proce
 
 1. **MongoDB Atlas** — free cluster; put URI in backend env.
 2. **Backend** — Render / Railway / Fly: root `backend`, start `npm start`, set env from `.env.example`.
-3. **Frontend** — Vercel: root `frontend`, set `NEXT_PUBLIC_API_URL` to the public API URL.
-4. Backend `CORS_ORIGIN` must match the frontend origin; `SESSION_SECRET` must be strong; `ALLOW_PRIVATE_URLS=false` in production.
+3. **Frontend** — Vercel: root `frontend`, set `BACKEND_URL` to your public API URL (server-only; Next proxies `/api`).
+4. Backend `SESSION_SECRET` must be strong; `ALLOW_PRIVATE_URLS=false` in production. No CORS setup needed — the browser only talks to the Next.js origin.
 
 After deploy, update this README with your live URL:
 

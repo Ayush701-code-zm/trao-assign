@@ -1,10 +1,8 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
-
 type ApiOptions = RequestInit & { json?: unknown };
 
 export async function api<T = unknown>(path: string, options: ApiOptions = {}): Promise<T> {
   const { json, headers, ...rest } = options;
-  const res = await fetch(`${API_URL}${path}`, {
+  const res = await fetch(path, {
     ...rest,
     credentials: 'include',
     headers: {
@@ -24,5 +22,3 @@ export async function api<T = unknown>(path: string, options: ApiOptions = {}): 
   }
   return data as T;
 }
-
-export { API_URL };
